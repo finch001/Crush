@@ -1,64 +1,64 @@
 package com.livvy.crush.photo.view.activity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import com.livvy.crush.R;
 import com.livvy.crush.comm.BaseActivity;
-import com.livvy.crush.comm.entity.Photo;
-import com.livvy.crush.photo.presenter.PhotoListPresenter;
-import com.livvy.crush.photo.view.PhotoListView;
-
-import java.util.List;
+import com.livvy.crush.photo.view.fragment.PhotoListFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import rx.Subscriber;
 
-public class PhotoListActivity extends BaseActivity implements PhotoListView
-{
+public class PhotoListActivity extends BaseActivity {
     private static final String TAG = "PhotoListActivity";
 
-    private Subscriber<Photo> ganHuoSubscriber;
+    private static final int DEFAULT_PAGE = 1;
 
-    private PhotoListPresenter listPresenter;
+    private Fragment[] fragments = new Fragment[3];
 
-    @Bind(R.id.getPhoto)
-    Button getPhotoBtn;
+    @Bind(R.id.view_pager)
+    ViewPager viewPager;
 
-    @OnClick(R.id.getPhoto)
-    void onclick()
-    {
-        listPresenter.getPhoto();
-    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ButterKnife.bind(this);
-
-        initPresenter();
-
+        initData();
     }
 
-    private void initPresenter()
-    {
-        listPresenter = new PhotoListPresenter(this);
-
-    }
-
-
-    @Override
-    public void showPhotoInfo(List<Photo> photos)
-    {
-        for (Photo item : photos)
-        {
-            Log.v(TAG, photos.toString());
+    private void initData() {
+        PhotoListFragment fragment;
+        for (int i = 0; i < 3; i++) {
+            fragment = PhotoListFragment.getInstance("photo " + i);
+            fragments[i] = fragment;
         }
+
+        FragmentPagerAdapter fragmentPagerAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragments[position];
+            }
+
+            @Override
+            public int getCount() {
+                return fragments.length;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                PhotoListFragment fragment = (PhotoListFragment) fragments[position];
+                return fragment.getTitle();
+            }
+        };
+
+        viewPager.setAdapter(fragmentPagerAdapter);
+
     }
+
+
 }

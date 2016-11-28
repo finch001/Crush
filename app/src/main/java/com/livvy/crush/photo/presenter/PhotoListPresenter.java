@@ -23,7 +23,7 @@ public class PhotoListPresenter
         this.photoListView = photoListView;
     }
 
-    public void getPhoto()
+    public void getPhoto(final int page)
     {
         subscriber = new Subscriber<List<Photo>>()
         {
@@ -49,7 +49,7 @@ public class PhotoListPresenter
             }
         };
 
-        HttpMethod.getInstance().getPhotos(subscriber, 1);
+        HttpMethod.getInstance().getPhotos(subscriber, page);
 
     }
 
