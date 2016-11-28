@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Crush</string>
+
+    <string name="getPhoto">photo</string>
+</resources>
