@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/category"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/action_home"
+            android:checked="true"
+            android:icon="@drawable/ic_mountain_light"
+            android:orderInCategory="100"
+            android:title="@string/action_home"/>
+
+        <item
+            android:id="@+id/action_multi_filter"
+            android:checkable="true"
+            android:icon="@drawable/ic_filter_outline_light"
+            android:orderInCategory="100"
+            android:title="@string/action_multi_filter"/>
+
+        <item
+            android:id="@+id/action_category_buildings"
+            android:icon="@drawable/ic_building_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_buildings"/>
+
+        <item
+            android:id="@+id/action_category_food_drink"
+            android:icon="@drawable/ic_drink_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_food_drink"/>
+
+        <item
+            android:id="@+id/action_category_nature"
+            android:icon="@drawable/ic_duck_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_nature"/>
+
+        <item
+            android:id="@+id/action_category_objects"
+            android:icon="@drawable/ic_cube_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_objects"/>
+
+        <item
+            android:id="@+id/action_category_people"
+            android:icon="@drawable/ic_face_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_people"/>
+
+        <item
+            android:id="@+id/action_category_technology"
+            android:icon="@drawable/ic_technology_light"
+            android:orderInCategory="100"
+            android:title="@string/action_category_technology"/>
+    </group>
+
+    <group
+        android:id="@+id/options"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/action_change_theme"
+            android:icon="@drawable/ic_theme_light"
+            android:orderInCategory="100"
+            android:title="@string/action_change_theme"/>
+
+        <item
+            android:id="@+id/action_download_manage"
+            android:icon="@drawable/ic_download_light"
+            android:orderInCategory="100"
+            android:title="@string/action_download_manage"/>
+
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_settings_light"
+            android:orderInCategory="100"
+            android:title="@string/action_settings"/>
+
+        <item
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_information_light"
+            android:orderInCategory="100"
+            android:title="@string/action_about"/>
+
+    </group>
+
+
+</menu>

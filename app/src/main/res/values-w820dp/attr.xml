@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- style -->
+    <declare-styleable name="root_color">
+        <attr name="root_color" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="line_color">
+        <attr name="line_color" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="title_color">
+        <attr name="title_color" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="subtitle_color">
+        <attr name="subtitle_color" format="reference|color" />
+    </declare-styleable>
+
+    <declare-styleable name="content_color">
+        <attr name="content_color" format="reference|color" />
+    </declare-styleable>
+
+    <!-- circleImageView -->
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <!-- FreedomImageView -->
+    <declare-styleable name="FreedomImageView">
+        <attr name="fiv_cover_mode" format="boolean" />
+        <attr name="fiv_text_position" format="string" />
+        <attr name="fiv_square" format="boolean" />
+    </declare-styleable>
+
+    <!-- SwipeBackCoordinatorLayout -->
+    <declare-styleable name="SwipeBackCoordinatorLayout">
+        <attr name="sbl_force_back" format="boolean" />
+    </declare-styleable>
+
+</resources>

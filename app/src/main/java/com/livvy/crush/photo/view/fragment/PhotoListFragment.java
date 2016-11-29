@@ -41,7 +41,6 @@ public class PhotoListFragment extends BaseFragment implements PhotoListView {
 
     public static PhotoListFragment getInstance(String title) {
         PhotoListFragment fragment = new PhotoListFragment();
-
         Bundle bundle = new Bundle();
         bundle.putString(TITLE, title);
         fragment.setArguments(bundle);

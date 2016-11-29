@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+
+    <!-- home tab. -->
+    <string-array name="home_tabs">
+        <item>NEW</item>
+        <item>FEATURED</item>
+        <item>COLLECTIONS</item>
+    </string-array>
+
+    <!-- search tab. -->
+    <string-array name="search_tabs">
+        <item>PHOTOS</item>
+        <item>COLLECTIONS</item>
+        <item>USERS</item>
+    </string-array>
+
+    <!-- user tab. -->
+    <string-array name="user_tabs">
+        <item>PHOTOS</item>
+        <item>COLLECTIONS</item>
+        <item>LIKES</item>
+    </string-array>
+
+    <!-- download option. -->
+    <string-array name="download_options">
+        <item>DOWNLOAD</item>
+        <item>SHARE</item>
+        <item>WALLPAPER</item>
+    </string-array>
+
+    <!-- requestKey order. -->
+    <string-array name="photo_orders">
+        <item>Latest</item>
+        <item>Oldest</item>
+        <item>Popular</item>
+        <item>Random</item>
+    </string-array>
+    <string-array name="photo_order_values">
+        <item>latest</item>
+        <item>oldest</item>
+        <item>popular</item>
+        <item>random</item>
+    </string-array>
+
+    <!-- collection type. -->
+    <string-array name="collection_types">
+        <item>All</item>
+        <item>Curated</item>
+        <item>Featured</item>
+    </string-array>
+    <string-array name="collection_type_values">
+        <item>all</item>
+        <item>curated</item>
+        <item>featured</item>
+    </string-array>
+
+    <!-- download type. -->
+    <string-array name="download_types">
+        <item>Compact</item>
+        <item>Raw</item>
+    </string-array>
+    <string-array name="download_type_values">
+        <item>compact</item>
+        <item>raw</item>
+    </string-array>
+
+    <!-- back to top. -->
+    <string-array name="back_to_top_type">
+        <item>All of the list view</item>
+        <item>Only Home</item>
+        <item>None</item>
+    </string-array>
+    <string-array name="back_to_top_type_values">
+        <item>all</item>
+        <item>home</item>
+        <item>none</item>
+    </string-array>
+
+    <!-- language. -->
+    <string-array name="languages">
+        <item>Follow system</item>
+        <item>English</item>
+        <item>中文</item>
+        <item>Italiano</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>follow_system</item>
+        <item>english</item>
+        <item>chinese</item>
+        <item>italian</item>
+    </string-array>
+
+    <!-- search orientation. -->
+    <string-array name="search_orientations">
+        <item>Landscape</item>
+        <item>Portrait</item>
+        <item>Square</item>
+    </string-array>
+    <string-array name="search_orientation_values">
+        <item>landscape</item>
+        <item>portrait</item>
+        <item>square</item>
+    </string-array>
+
+</resources>
