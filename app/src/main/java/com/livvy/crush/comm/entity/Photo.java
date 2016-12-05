@@ -154,5 +154,16 @@ public class Photo implements Parcelable
         }
     };
 
-
+    @Override
+    public String toString()
+    {
+        return "Photo{" +
+                "loadPhotoSuccess=" + loadPhotoSuccess +
+                ", id='" + id + '\'' +
+                ", created_at='" + created_at + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

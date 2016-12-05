@@ -1,6 +1,8 @@
 package com.livvy.crush.comm.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.livvy.crush.R;
 import com.livvy.crush.comm.entity.Photo;
@@ -20,7 +23,7 @@ import java.util.List;
 
 public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.ImageVH>
 {
-
+    private OnItemOnclickListener listener;
     private List<Photo> photoList;
     private Context context;
 
@@ -39,15 +42,21 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Imag
     @Override
     public ImageVH onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        ImageVH VH = new ImageVH(LayoutInflater.from(context).inflate(R.layout.item_img, parent, false));
-        return VH;
+        return new ImageVH(LayoutInflater.from(context).inflate(R.layout.item_img, parent, false));
     }
 
     @Override
     public void onBindViewHolder(ImageVH holder, int position)
     {
         Photo item = photoList.get(position);
-        Glide.with(context).load(item.urls.full).crossFade().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(holder.imageView);
+        Glide.with(context).load(item.urls.regular).placeholder(new ColorDrawable(Color.parseColor(item.color))).crossFade()
+                .override(item.getRegularWidth(), item.getRegularHeight()).priority(Priority.HIGH)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(holder.imageView);
+
+        if (listener != null)
+        {
+            listener.onItemOnclick(position);
+        }
 
     }
 
@@ -60,5 +69,15 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Imag
             super(itemView);
             imageView = (ImageView)itemView.findViewById(R.id.img);
         }
+    }
+
+    public void setOnclickListener(OnItemOnclickListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public interface OnItemOnclickListener
+    {
+        void onItemOnclick(int position);
     }
 }

@@ -1,5 +1,6 @@
 package com.livvy.crush.photo.presenter;
 
+import com.livvy.crush.comm.adapter.PhotoListAdapter;
 import com.livvy.crush.comm.entity.Photo;
 import com.livvy.crush.http.HttpMethod;
 import com.livvy.crush.photo.view.PhotoListView;
@@ -16,14 +17,17 @@ public class PhotoListPresenter
 {
     private PhotoListView photoListView;
 
+    private PhotoListAdapter photoListAdapter;
+
     private Subscriber<List<Photo>> subscriber;
 
-    public PhotoListPresenter(PhotoListView photoListView)
+    public PhotoListPresenter(PhotoListView photoListView, PhotoListAdapter adapter)
     {
         this.photoListView = photoListView;
+        this.photoListAdapter = adapter;
     }
 
-    public void getPhoto(final int page)
+    public void getRemotePhoto(final int page)
     {
         subscriber = new Subscriber<List<Photo>>()
         {
@@ -52,6 +56,5 @@ public class PhotoListPresenter
         HttpMethod.getInstance().getPhotos(subscriber, page);
 
     }
-
 
 }
