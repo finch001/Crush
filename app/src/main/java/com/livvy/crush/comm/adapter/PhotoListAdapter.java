@@ -27,10 +27,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Imag
     private List<Photo> photoList;
     private Context context;
 
-    public PhotoListAdapter(Context context, List<Photo> photoList)
+    public PhotoListAdapter(Context context, List<Photo> photoList, OnItemOnclickListener listener)
     {
         this.photoList = photoList;
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
@@ -42,42 +43,49 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.Imag
     @Override
     public ImageVH onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        return new ImageVH(LayoutInflater.from(context).inflate(R.layout.item_img, parent, false));
+        return new ImageVH(LayoutInflater.from(context).inflate(R.layout.item_img, parent, false), listener);
     }
 
     @Override
     public void onBindViewHolder(ImageVH holder, int position)
     {
         Photo item = photoList.get(position);
-        Glide.with(context).load(item.urls.regular).placeholder(new ColorDrawable(Color.parseColor(item.color))).crossFade()
-                .override(item.getRegularWidth(), item.getRegularHeight()).priority(Priority.HIGH)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(holder.imageView);
-
-        if (listener != null)
-        {
-            listener.onItemOnclick(position);
-        }
-
+        holder.setItem(item);
     }
 
-    static class ImageVH extends RecyclerView.ViewHolder
+    class ImageVH extends RecyclerView.ViewHolder
     {
         private ImageView imageView;
+        private Photo photo;
 
-        public ImageVH(View itemView)
+        public ImageVH(View itemView, final OnItemOnclickListener listener)
         {
             super(itemView);
             imageView = (ImageView)itemView.findViewById(R.id.img);
+            imageView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    if (listener != null)
+                    {
+                        listener.onItemOnclick(photo);
+                    }
+                }
+            });
         }
-    }
 
-    public void setOnclickListener(OnItemOnclickListener listener)
-    {
-        this.listener = listener;
+        public void setItem(Photo photo)
+        {
+            this.photo = photo;
+            Glide.with(context).load(photo.urls.regular).crossFade().override(photo.getRegularWidth(), photo.getRegularHeight())
+                    .centerCrop().placeholder(new ColorDrawable(Color.parseColor(photo.color))).priority(Priority.HIGH)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
+        }
     }
 
     public interface OnItemOnclickListener
     {
-        void onItemOnclick(int position);
+        void onItemOnclick(Photo photo);
     }
 }

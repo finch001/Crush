@@ -4,37 +4,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/fragment_home_appBar"
+        android:id="@+id/fragment_setting_appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:theme="@style/MysplashToolbarTheme">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/fragment_home_toolbar"
+            android:id="@+id/fragment_setting_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|snap|enterAlways"
             app:popupTheme="@style/MysplashPopupMenuTheme"
-            app:title="@string/app_name"
+            app:title="@string/action_settings"
             tools:ignore="UnusedAttribute"/>
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/fragment_home_tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_layout_height"
-            app:tabIndicatorColor="?attr/title_color"
-            app:tabIndicatorHeight="3dp"
-            app:tabSelectedTextColor="?attr/content_color"
-            app:tabTextColor="?attr/subtitle_color"/>
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
+    <FrameLayout
+        android:id="@+id/activity_settings_preferenceContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"

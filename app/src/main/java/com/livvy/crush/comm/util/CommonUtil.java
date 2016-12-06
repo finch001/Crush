@@ -1,7 +1,7 @@
 /**
  * Copyright © vyou Technologies Co., Ltd. 2013-2014. All rights reserved
  */
-package com.livvy.crush.util;
+package com.livvy.crush.comm.util;
 
 import android.app.Activity;
 import android.content.Context;

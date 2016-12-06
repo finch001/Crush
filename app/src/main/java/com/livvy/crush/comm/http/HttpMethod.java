@@ -1,9 +1,9 @@
-package com.livvy.crush.http;
+package com.livvy.crush.comm.http;
 
 import com.livvy.crush.BuildConfig;
 import com.livvy.crush.comm.Constants;
 import com.livvy.crush.comm.entity.Photo;
-import com.livvy.crush.util.AuthInterceptor;
+import com.livvy.crush.comm.util.AuthInterceptor;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

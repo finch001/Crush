@@ -2,7 +2,7 @@ package com.livvy.crush.photo.presenter;
 
 import com.livvy.crush.comm.adapter.PhotoListAdapter;
 import com.livvy.crush.comm.entity.Photo;
-import com.livvy.crush.http.HttpMethod;
+import com.livvy.crush.comm.http.HttpMethod;
 import com.livvy.crush.photo.view.PhotoListView;
 
 import java.util.List;

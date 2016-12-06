@@ -46,8 +46,8 @@
 
     <!-- 下载类型 -->
     <string-array name="download_types">
-        <item>压缩过的</item>
-        <item>未经压缩</item>
+        <item>压缩</item>
+        <item>未压缩</item>
     </string-array>
 
     <!-- 返回顶部 -->

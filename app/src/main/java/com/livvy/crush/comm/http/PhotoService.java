@@ -1,4 +1,4 @@
-package com.livvy.crush.http;
+package com.livvy.crush.comm.http;
 
 import com.livvy.crush.comm.entity.Photo;
 

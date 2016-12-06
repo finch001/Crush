@@ -63,14 +63,7 @@ public class PhotoListFragment extends BaseFragment implements PhotoListView, Ph
         ButterKnife.bind(this, view);
         initPresenter();
         initData();
-        initListener();
-
         return view;
-    }
-
-    private void initListener()
-    {
-        adapter.setOnclickListener(this);
     }
 
 
@@ -81,10 +74,9 @@ public class PhotoListFragment extends BaseFragment implements PhotoListView, Ph
 
     private void initData()
     {
-        adapter = new PhotoListAdapter(getActivity(), photoList);
+        adapter = new PhotoListAdapter(getActivity(), photoList, this);
         photoRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         photoRecyclerView.setAdapter(adapter);
-
         photoListPresenter.getRemotePhoto(DEFAULT_PAGE);
     }
 
@@ -100,11 +92,9 @@ public class PhotoListFragment extends BaseFragment implements PhotoListView, Ph
         adapter.notifyDataSetChanged();
     }
 
-
     @Override
-    public void onItemOnclick(int position)
+    public void onItemOnclick(Photo photo)
     {
-        Photo photo = photoList.get(position);
         if (photo != null)
         {
             Snackbar.make(photoRecyclerView, photo.toString(), Snackbar.LENGTH_SHORT).show();

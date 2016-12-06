@@ -208,6 +208,7 @@
     <string name="settings_category_basic">Basic</string>
     <string name="settings_title_back_to_top">Press back button to scroll to top</string>
     <string name="settings_title_language">Language</string>
+    <string name="settings_auto_save">AutoSave</string>
 
     <string name="settings_category_filter">Filter</string>
     <string name="settings_title_default_order">Default order</string>
@@ -221,6 +222,7 @@
 
     <string name="key_back_to_top">back_to_top</string>
     <string name="key_language">language</string>
+    <string name="key_auto_save">AutoSave</string>
     <string name="key_default_photo_order">default_photo_order</string>
     <string name="key_default_collection_type">default_collection_type</string>
     <string name="key_download_scale">download_scale</string>

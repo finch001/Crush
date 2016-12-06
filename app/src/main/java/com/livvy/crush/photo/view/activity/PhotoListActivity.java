@@ -1,11 +1,14 @@
 package com.livvy.crush.photo.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.livvy.crush.R;
@@ -13,6 +16,7 @@ import com.livvy.crush.comm.BaseActivity;
 import com.livvy.crush.comm.BaseFragment;
 import com.livvy.crush.comm.adapter.PhotoViewPagerAdapter;
 import com.livvy.crush.photo.view.fragment.PhotoListFragment;
+import com.livvy.crush.setting.view.activity.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,14 +47,33 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
     @Bind(R.id.fragment_home_tabLayout)
     TabLayout tabLayout;
 
+    @Bind(R.id.fragment_home_toolbar)
+    Toolbar toolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initToolBar();
         initView();
         initData();
+    }
+
+    private void initToolBar()
+    {
+        toolbar.setNavigationIcon(R.drawable.ic_toolbar_menu_light);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
+
+        mDrawerToggle.syncState();
+        drawerLayout.addDrawerListener(mDrawerToggle);
     }
 
     private void initView()
@@ -85,6 +108,19 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
         Snackbar.make(drawerLayout, item.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
         item.setChecked(true);
         drawerLayout.closeDrawers();
+
+        switch (item.getItemId())
+        {
+            case R.id.action_settings:
+                Intent intent = new Intent(PhotoListActivity.this, SettingActivity.class);
+                startActivity(intent);
+                break;
+
+            default:
+                break;
+        }
+
         return true;
     }
+
 }

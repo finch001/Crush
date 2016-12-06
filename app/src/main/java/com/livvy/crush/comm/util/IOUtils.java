@@ -1,4 +1,4 @@
-package com.livvy.crush.util;
+package com.livvy.crush.comm.util;
 
 import android.database.Cursor;
 import android.os.ParcelFileDescriptor;

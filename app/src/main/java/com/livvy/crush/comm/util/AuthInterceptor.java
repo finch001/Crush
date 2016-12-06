@@ -1,6 +1,6 @@
-package com.livvy.crush.util;
+package com.livvy.crush.comm.util;
 
-import com.livvy.crush.http.HttpMethod;
+import com.livvy.crush.comm.http.HttpMethod;
 
 import java.io.IOException;
 

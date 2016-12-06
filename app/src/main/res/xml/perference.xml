@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/key_auto_save"
+        android:summaryOff="no"
+        android:summaryOn="yes"
+        android:title="@string/settings_auto_save"/>
+
+    <PreferenceCategory
+        android:title="@string/settings_category_basic"
+        >
+
+        <ListPreference
+            android:defaultValue="all"
+            android:entries="@array/back_to_top_type"
+            android:entryValues="@array/back_to_top_type_values"
+            android:key="@string/key_back_to_top"
+            android:title="@string/settings_title_back_to_top"
+            />
+
+        <ListPreference
+            android:defaultValue="follow_system"
+            android:entries="@array/languages"
+            android:entryValues="@array/language_values"
+            android:key="@string/key_language"
+            android:title="@string/settings_title_language"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_category_filter"
+        >
+
+        <ListPreference
+            android:defaultValue="latest"
+            android:entries="@array/photo_orders"
+            android:entryValues="@array/photo_order_values"
+            android:key="@string/key_default_photo_order"
+            android:title="@string/settings_title_default_order"
+            />
+
+        <ListPreference
+            android:defaultValue="featured"
+            android:entries="@array/collection_types"
+            android:entryValues="@array/collection_type_values"
+            android:key="@string/key_default_collection_type"
+            android:title="@string/settings_title_default_collection_type"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/settings_category_download"
+        >
+
+        <ListPreference
+            android:defaultValue="compact"
+            android:entries="@array/download_types"
+            android:entryValues="@array/download_type_values"
+            android:key="@string/key_download_scale"
+            android:title="@string/settings_title_download_scale"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
