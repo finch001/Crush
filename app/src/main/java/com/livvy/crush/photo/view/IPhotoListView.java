@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Finch on 2016/11/28 0028.
  */
 
-public interface PhotoListView
+public interface IPhotoListView
 {
     void showPhotoInfo(List<Photo> photos);
 
