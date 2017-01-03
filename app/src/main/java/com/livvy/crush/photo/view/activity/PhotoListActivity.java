@@ -2,6 +2,8 @@ package com.livvy.crush.photo.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -15,6 +17,7 @@ import com.livvy.crush.R;
 import com.livvy.crush.comm.BaseActivity;
 import com.livvy.crush.comm.BaseFragment;
 import com.livvy.crush.comm.adapter.PhotoViewPagerAdapter;
+import com.livvy.crush.login.view.LoginActivity;
 import com.livvy.crush.photo.view.fragment.PhotoListFragment;
 import com.livvy.crush.setting.view.activity.SettingActivity;
 
@@ -25,8 +28,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class PhotoListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener
-{
+public class PhotoListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = "PhotoListActivity";
 
     private static final int DEFAULT_PAGE = 1;
@@ -51,9 +53,15 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
     Toolbar toolbar;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+        }
+    };
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -62,8 +70,7 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
         initData();
     }
 
-    private void initToolBar()
-    {
+    private void initToolBar() {
         toolbar.setNavigationIcon(R.drawable.ic_toolbar_menu_light);
         setSupportActionBar(toolbar);
 
@@ -76,17 +83,14 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
         drawerLayout.addDrawerListener(mDrawerToggle);
     }
 
-    private void initView()
-    {
+    private void initView() {
         viewPager.setOffscreenPageLimit(PAGE_OFFSET);
         view.setNavigationItemSelectedListener(this);
     }
 
-    private void initData()
-    {
+    private void initData() {
         PhotoListFragment fragment;
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             fragment = PhotoListFragment.getInstance("photo " + i);
             fragments.add(fragment);
         }
@@ -103,19 +107,21 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
+    public boolean onNavigationItemSelected(MenuItem item) {
         Snackbar.make(drawerLayout, item.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
         item.setChecked(true);
         drawerLayout.closeDrawers();
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent intent = new Intent(PhotoListActivity.this, SettingActivity.class);
                 startActivity(intent);
                 break;
 
+            case R.id.action_about:
+                Intent intentLogin = new Intent(PhotoListActivity.this, LoginActivity.class);
+                startActivity(intentLogin);
+                break;
             default:
                 break;
         }

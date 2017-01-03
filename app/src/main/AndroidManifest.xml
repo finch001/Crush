@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.livvy.crush"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.livvy.crush">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".XApplication"
@@ -13,20 +18,20 @@
         android:theme="@style/MysplashTheme_light">
         <activity
             android:name=".photo.view.activity.PhotoListActivity"
-            android:theme="@style/MysplashTheme_light"
-            >
+            android:theme="@style/MysplashTheme_light">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".setting.view.activity.SettingActivity"
-            android:theme="@style/MysplashTheme_light">
-
-        </activity>
+            android:theme="@style/MysplashTheme_light" />
+        <activity
+            android:name=".login.view.LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".login.view.CommentActivity" />
     </application>
 
 </manifest>
