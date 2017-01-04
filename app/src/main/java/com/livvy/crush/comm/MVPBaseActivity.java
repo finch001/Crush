@@ -7,13 +7,15 @@ import android.support.annotation.Nullable;
  * Created by finch on 2016/12/12.
  */
 
-public abstract class MVPBaseActivity<V, P extends BasePresenter<V>>  extends BaseActivity{
+public abstract class MVPBaseActivity<V, P extends BasePresenter<V>> extends BaseActivity {
     protected P presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         presenter = createPresenter();
+        presenter.attachView((V) this);
+
     }
 
     protected abstract P createPresenter();

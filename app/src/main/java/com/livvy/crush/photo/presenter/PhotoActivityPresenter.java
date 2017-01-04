@@ -1,21 +1,22 @@
-package com.livvy.crush.login.presenter;
+package com.livvy.crush.photo.presenter;
 
 import com.livvy.crush.comm.BasePresenter;
-import com.livvy.crush.login.view.LoginActivity;
+import com.livvy.crush.photo.view.activity.PhotoListActivity;
 
 /**
- * Created by finch on 2016/12/13.
+ * Created by finch on 2017/1/3.
  */
 
-public class LoginPresenter extends BasePresenter<LoginActivity> {
+public class PhotoActivityPresenter extends BasePresenter<PhotoListActivity> {
+
 
     @Override
-    public void attachView(LoginActivity view) {
+    public void attachView(PhotoListActivity view) {
         super.attachView(view);
     }
 
     @Override
-    protected LoginActivity getView() {
+    protected PhotoListActivity getView() {
         return super.getView();
     }
 

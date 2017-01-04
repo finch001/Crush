@@ -2,8 +2,6 @@ package com.livvy.crush.photo.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -12,12 +10,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.livvy.crush.R;
-import com.livvy.crush.comm.BaseActivity;
 import com.livvy.crush.comm.BaseFragment;
+import com.livvy.crush.comm.MVPBaseActivity;
 import com.livvy.crush.comm.adapter.PhotoViewPagerAdapter;
-import com.livvy.crush.login.view.LoginActivity;
+import com.livvy.crush.photo.presenter.PhotoActivityPresenter;
 import com.livvy.crush.photo.view.fragment.PhotoListFragment;
 import com.livvy.crush.setting.view.activity.SettingActivity;
 
@@ -27,8 +28,9 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class PhotoListActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class PhotoListActivity extends MVPBaseActivity<PhotoListActivity, PhotoActivityPresenter> implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private static final String TAG = "PhotoListActivity";
 
     private static final int DEFAULT_PAGE = 1;
@@ -51,14 +53,17 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
 
     @Bind(R.id.fragment_home_toolbar)
     Toolbar toolbar;
-    private ActionBarDrawerToggle mDrawerToggle;
 
-    private Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
+    View headMenuLayout;
+    View loginAfterLayout;
 
-        }
-    };
+    CircleImageView userAvater;
+
+    TextView userNameTv;
+
+    Button loginBtn;
+
+    ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +73,18 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
         initToolBar();
         initView();
         initData();
+        initListener();
+    }
+
+    private void initListener() {
+        loginAfterLayout.setOnClickListener(this);
+        userAvater.setOnClickListener(this);
+        loginBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected PhotoActivityPresenter createPresenter() {
+        return new PhotoActivityPresenter();
     }
 
     private void initToolBar() {
@@ -86,10 +103,16 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
     private void initView() {
         viewPager.setOffscreenPageLimit(PAGE_OFFSET);
         view.setNavigationItemSelectedListener(this);
+
+        headMenuLayout = view.getHeaderView(0);
+        userAvater = (CircleImageView) headMenuLayout.findViewById(R.id.user_avator_iv);
+        userNameTv = (TextView) headMenuLayout.findViewById(R.id.user_name_tv);
+        loginBtn = (Button) headMenuLayout.findViewById(R.id.login_btn);
+        loginAfterLayout = headMenuLayout.findViewById(R.id.login_success_layout);
     }
 
     private void initData() {
-        PhotoListFragment fragment;
+        PhotoListFragment fragment = null;
         for (int i = 0; i < 3; i++) {
             fragment = PhotoListFragment.getInstance("photo " + i);
             fragments.add(fragment);
@@ -117,11 +140,6 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
                 Intent intent = new Intent(PhotoListActivity.this, SettingActivity.class);
                 startActivity(intent);
                 break;
-
-            case R.id.action_about:
-                Intent intentLogin = new Intent(PhotoListActivity.this, LoginActivity.class);
-                startActivity(intentLogin);
-                break;
             default:
                 break;
         }
@@ -129,4 +147,26 @@ public class PhotoListActivity extends BaseActivity implements NavigationView.On
         return true;
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.login_btn:
+                break;
+
+            case R.id.login_success_layout:
+                // 跳转到个人主页
+
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        intent.getData().getAuthority();
+    }
 }

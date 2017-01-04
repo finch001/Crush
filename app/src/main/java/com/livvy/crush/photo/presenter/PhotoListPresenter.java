@@ -4,6 +4,7 @@ import com.livvy.crush.comm.BasePresenter;
 import com.livvy.crush.comm.entity.Photo;
 import com.livvy.crush.comm.http.HttpMethod;
 import com.livvy.crush.photo.view.IPhotoListView;
+import com.livvy.crush.photo.view.fragment.PhotoListFragment;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import rx.Subscriber;
  * Created by Finch on 2016/11/28 0028.
  */
 
-public class PhotoListPresenter extends BasePresenter<IPhotoListView> {
+public class PhotoListPresenter extends BasePresenter<PhotoListFragment> {
     private IPhotoListView photoListView;
 
     private Subscriber<List<Photo>> subscriber;

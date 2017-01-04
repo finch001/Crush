@@ -26,7 +26,7 @@ import butterknife.ButterKnife;
  * Created by Finch on 2016/11/28 0028.
  */
 
-public class PhotoListFragment extends MVPBaseFragment<IPhotoListView, PhotoListPresenter> implements IPhotoListView, PhotoListAdapter.OnItemOnclickListener {
+public class PhotoListFragment extends MVPBaseFragment<PhotoListFragment, PhotoListPresenter> implements IPhotoListView, PhotoListAdapter.OnItemOnclickListener {
     private List<Photo> photoList = new ArrayList<>();
     private PhotoListAdapter adapter;
 
@@ -89,4 +89,5 @@ public class PhotoListFragment extends MVPBaseFragment<IPhotoListView, PhotoList
     protected PhotoListPresenter createPresenter() {
         return new PhotoListPresenter(this);
     }
+
 }

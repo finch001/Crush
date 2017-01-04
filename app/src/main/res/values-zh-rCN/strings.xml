@@ -179,4 +179,6 @@
     <string name="settings_category_download">下载</string>
     <string name="settings_title_download_scale">下载规格</string>
 
+    <string name="logon_text">登录</string>
+
 </resources>
