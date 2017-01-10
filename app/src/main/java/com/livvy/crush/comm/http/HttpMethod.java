@@ -1,22 +1,14 @@
 package com.livvy.crush.comm.http;
 
-import android.os.Environment;
-
 import com.livvy.crush.BuildConfig;
 import com.livvy.crush.comm.Constants;
 import com.livvy.crush.comm.entity.Photo;
 import com.livvy.crush.comm.util.AuthInterceptor;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cache;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -76,25 +68,6 @@ public class HttpMethod {
         }
         clientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS).readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
-
-        File cacheFile = new File(Environment.getExternalStorageDirectory() + "/livvy/caches");
-        Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
-        clientBuilder.cache(cache);
-
-        clientBuilder.addNetworkInterceptor(new Interceptor() {
-            @Override
-            public Response intercept(Chain chain) throws IOException {
-                Request request = chain.request();
-                Response response = chain.proceed(request);
-                int maxAge = 60 * 60 * 24; // 有网络的时候从缓存1天后失效
-                response.newBuilder()
-                        .removeHeader("Pragma")
-                        .header("Cache-Control", "public, max-age=" + maxAge)
-                        .build();
-                return response;
-            }
-        });
-
         retrofit = new Retrofit.Builder().client(clientBuilder.build()).addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()).baseUrl(API_BASE_URL).build();
 

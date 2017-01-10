@@ -14,7 +14,6 @@ public abstract class MVPBaseFragment<V, P extends BasePresenter<V>> extends Bas
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         prestener = createPresenter();
     }
 

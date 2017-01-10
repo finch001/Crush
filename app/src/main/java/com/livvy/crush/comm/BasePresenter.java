@@ -29,5 +29,7 @@ public abstract class BasePresenter<T> {
             viewRef = null;
         }
     }
+
+    public abstract void start();
 }
                                                   
